@@ -5,7 +5,6 @@
 #include "multi_between_negative.h"
 #include "multi_before_and_after_negative.h"
 #define PRINT_DOUBLE "%d\n"
-#define HELLO
 
 void print_solve(int arr[], int operation, int arr_count_items){
 	switch(operation){
