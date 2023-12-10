@@ -5,16 +5,17 @@
 
 struct Sentence{
 	size_t length;
-	size_t last_index;
+	int last_index;
 	wchar_t * sentence;
 };
 
+typedef struct Sentence Sentence;
+
 struct Text{
 	size_t length;
-	wchar_t ** text;
+	Sentence ** text;
 };
 
-typedef struct Sentence Sentence;
 typedef struct Text Text;
 
 #endif

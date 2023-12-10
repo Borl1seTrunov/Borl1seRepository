@@ -2,22 +2,20 @@
 #include "failure.h"
 #include "help.h"
 #include "read_text.h"
-#include "treatment_text.h"
-#include "output_treatment_text.h"
+#include "output_text.h"
 #include "structs.h"
 
 void action_selection(){
 	size_t number_command;
-	scanf("%ld", &number_command);
-	getchar();
+	wscanf(L"%ld", &number_command);
+	getwchar();
 	if (number_command == 5){
 		help();
-	}else{
+	}else if (0 <= number_command && number_command < 5){
 		Text *  text = read_text();
-		//text = treatment_text(text);
 		switch (number_command){
 			case 0:
-				output_treatment_text(text);
+				output_text(text);
 				break;
 			case 1:
 				break;
@@ -27,8 +25,9 @@ void action_selection(){
 				break;
 			case 4:
 				break;
-			default:
-				failure(FAILURE_FUNCTION_NUMBER);
 		}
+	}else{
+		failure(FAILURE_FUNCTION_NUMBER);
+		exit(0);
 	}
 }
