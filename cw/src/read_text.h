@@ -2,6 +2,7 @@
 #define READ_TEXT_HEADER
 
 #include <wchar.h>
+#include <wctype.h>
 #include <stdlib.h>
 #include "structs.h"
 #include "failure.h"
