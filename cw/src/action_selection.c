@@ -8,7 +8,6 @@
 #include "move_words.h"
 #include "delete_last_upper_char.h"
 
-
 void action_selection(){
 	size_t number_command;
 	wscanf(L"%ld", &number_command);
