@@ -65,6 +65,26 @@ Sentence * text_to_sentence(wchar_t * text, size_t start_index){
 	return sentence;
 }
 
+int compare_for_text_sentences(const wchar_t * first_sentence, const wchar_t * second_sentence){
+	while(*first_sentence && *second_sentence){
+		if(towupper(*first_sentence) != towupper(*second_sentence)){
+			return 0;
+		}
+		first_sentence++;
+		second_sentence++;
+	}
+	return (*first_sentence == SYMBOL_END_STRING && *second_sentence == SYMBOL_END_STRING);
+}
+
+int is_dublicate(Text* text, Sentence* string){
+	for (size_t i = 0; i < text->length; i++){
+		if (compare_for_text_sentences(text->text[i]->sentence,string->sentence)){
+			return 1;
+		}
+	}
+	return 0;
+}
+
 Text * read_text(){
 	Text * finish_text = (Text*)malloc(sizeof(Text));
 	if (finish_text == NULL){
@@ -80,7 +100,7 @@ Text * read_text(){
 	Sentence * sentence = NULL;
 	do{
 		sentence = text_to_sentence(text,start_index);
-		if (sentence->sentence != NULL){
+		if (sentence->sentence != NULL && !is_dublicate(finish_text, sentence)){
 			finish_text->text = (Sentence**)realloc(finish_text->text, sizeof(Sentence*)*(finish_text->length + 1));
 			if (finish_text->text == NULL){
 				failure(FAILURE_MEMORY);
@@ -89,6 +109,5 @@ Text * read_text(){
 		}
 		start_index = sentence->last_index;
 	}while(sentence->last_index != -1);
-	//finish_text = delete_dublicate(finish_text);
 	return finish_text;	
 }

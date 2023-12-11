@@ -11,8 +11,10 @@
 #define SYMBOL_POINT L'.'
 #define SYMBOL_SPACE L' '
 
-Text * read_text();
-Sentence * text_to_sentence(wchar_t * text, size_t start_index);
 wchar_t * read();
+Sentence * text_to_sentence(wchar_t * text, size_t start_index);
+int compare_for_text_sentences(const wchar_t * first_sentence, const wchar_t * second_sentence);
+int is_dublicate(Text* text, Sentence* string);
+Text * read_text();
 
 #endif
