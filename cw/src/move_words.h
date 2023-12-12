@@ -4,8 +4,9 @@
 #include <wchar.h>
 #include <stdlib.h>
 #include "structs.h"
-#define N 2
 
-void move_words(Text* text);
+#define SEPARATOR L" ."
+
+void move_words(Text* text, size_t count_inverse);
 
 #endif

@@ -1,19 +1,19 @@
 #include "move_words.h"
 
-void move_words(Text * text){
+void move_words(Text * text, size_t count_inverse){
 	for (size_t i = 0; i < text->length; i++){
 		size_t count_words = 0;
 		wchar_t ** array_words = NULL;
 		wchar_t * pt = NULL;
-		wchar_t * new_word = wcstok(text->text[i]->sentence,L" .", &pt);
+		wchar_t * new_word = wcstok(text->text[i]->sentence,SEPARATOR, &pt);
 		while(new_word != NULL){
 			array_words = realloc(array_words, sizeof(wchar_t*)*(count_words + 1));
 			array_words[count_words] = malloc(sizeof(wchar_t)*(wcslen(new_word) + 1));
 			array_words[count_words] = wcscpy(array_words[count_words], new_word);
 			count_words++;
-			new_word = wcstok(NULL, L" .", &pt);
+			new_word = wcstok(NULL, SEPARATOR, &pt);
 		}
-		for (size_t x = 0; x < N; x++){
+		for (size_t x = 0; x < count_inverse; x++){
 			for (size_t z = 0; z < count_words - 1;z++){
 				wchar_t * temp = array_words[z];
 				array_words[z] = array_words[z + 1];

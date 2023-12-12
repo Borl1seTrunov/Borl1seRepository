@@ -1,10 +1,10 @@
-all: main.o welcome.o action_selection.o failure.o help.o read_text.o delete_last_upper_char.o output_text.o move_words.o free_memory.o
-	gcc -std=c99 main.o welcome.o action_selection.o failure.o help.o read_text.o delete_last_upper_char.o output_text.o move_words.o free_memory.o -o cw
+all: main.o welcome.o action_selection.o failure.o help.o read_text.o count_length_words.o set_unic.o delete_last_upper_char.o output_text.o move_words.o free_memory.o
+	gcc -std=c99 main.o welcome.o action_selection.o failure.o help.o read_text.o set_unic.o count_length_words.o delete_last_upper_char.o output_text.o move_words.o free_memory.o -o cw
 main.o: main.c welcome.h action_selection.h
 	gcc -c main.c
 welcome.o: welcome.c welcome.h
 	gcc -c welcome.c
-action_selection.o: action_selection.c action_selection.h failure.h help.h delete_last_upper_char.h move_words.h read_text.h output_text.h free_memory.h
+action_selection.o: action_selection.c action_selection.h config_action_selection.h
 	gcc -c action_selection.c
 failure.o: failure.c failure.h
 	gcc -c failure.c
@@ -20,6 +20,10 @@ move_words.o: move_words.c move_words.h
 	gcc -c move_words.c
 delete_last_upper_char.o: delete_last_upper_char.c delete_last_upper_char.h
 	gcc -c delete_last_upper_char.c
+set_unic.o:	set_unic.c set_unic.h
+	gcc -c set_unic.c
+count_length_words.o: count_length_words.c count_length_words.h
+	gcc -c count_length_words.c
 clean:
-	rm *.o
-	rm cw
+	rm -f *.o
+	rm -f cw
